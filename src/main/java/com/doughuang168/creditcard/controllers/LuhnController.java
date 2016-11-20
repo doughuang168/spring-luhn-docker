@@ -1,5 +1,7 @@
 package com.doughuang168.creditcard.controllers;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import com.doughuang168.creditcard.Response;
 import com.doughuang168.creditcard.Luhn;
 import org.springframework.beans.factory.annotation.Value;
@@ -31,8 +33,7 @@ public class LuhnController {
             System.out.println(luhnApiKey);
             System.out.println(key);
         }
-
-        //boolean valid  = luhnInstance.isValidLuhn("79927398713");
+        
         String result="";
         String message="";
         if (luhnInstance.isValidLuhn(cardnumber)) {

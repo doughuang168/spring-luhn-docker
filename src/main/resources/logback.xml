@@ -6,10 +6,12 @@
         </encoder>
     </appender>
 
+
     <logger name="org.springframework.web" additivity="false">
         <level value="DEBUG"/>
         <appender-ref ref="STDOUT"/>
     </logger>
+
 
     <root level="INFO">
         <appender-ref ref="STDOUT"/>
