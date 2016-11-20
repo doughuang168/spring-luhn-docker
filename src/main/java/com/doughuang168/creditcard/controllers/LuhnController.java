@@ -2,6 +2,7 @@ package com.doughuang168.creditcard.controllers;
 
 import com.doughuang168.creditcard.Response;
 import com.doughuang168.creditcard.Luhn;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,6 +11,12 @@ import java.util.concurrent.atomic.AtomicLong;
 @Controller
 @RequestMapping("/api")
 public class LuhnController {
+     /**
+     * Inject property.
+     */
+    @Value("${luhn.api.key}")
+    private String luhnApiKey;
+
     private static final String template = "%s";
     private final AtomicLong counter = new AtomicLong();
 
@@ -20,7 +27,8 @@ public class LuhnController {
                       )
     {
         Luhn luhnInstance = new Luhn();
-        if (!key.contentEquals("AKIAIGRRCYKRZIJX633Q")) {
+        if (!key.contentEquals(luhnApiKey)) {
+            System.out.println(luhnApiKey);
             System.out.println(key);
         }
 
