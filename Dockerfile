@@ -1,27 +1,15 @@
-FROM phusion/baseimage
+FROM java:8
 
 EXPOSE 8080
 
-RUN apt-get update
-RUN add-apt-repository ppa:webupd8team/java
-RUN sudo add-apt-repository ppa:cwchien/gradle
+RUN mkdir /home/luhn
 
-RUN apt-get update
-RUN echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | sudo /usr/bin/debconf-set-selections
-RUN apt-get -y install oracle-java8-installer supervisor gradle-2.9 git
-RUN apt-get update
+COPY ./build/libs/spring-luhn-docker-1.0-SNAPSHOT.jar /home/luhn/luhnapi.jar
 
-RUN java -version
+RUN  echo "#!/bin/bash                                                  " >/home/luhn/start-service.sh
+RUN  echo "cd /home/luhn                                                ">>/home/luhn/start-service.sh
+RUN  echo "/usr/bin/java -Dluhn.api.key=\`echo \$luhn_api_key\` -jar luhnapi.jar" >>/home/luhn/start-service.sh
 
-#Fetch workeek micro-service source code from GitHub
-RUN  mkdir /home/workweek-user
-RUN  echo "#!/bin/bash                  " > /home/workweek-user/start-service.sh
-RUN  echo "cd /opt                      " >>/home/workweek-user/start-service.sh
-RUN  echo "git clone https://github.com/doughuang168/docker-spring-boot-scala-workweek" >>/home/workweek-user/start-service.sh
-RUN  echo "cd /opt/docker-spring-boot-scala-workweek        "                           >>/home/workweek-user/start-service.sh
-RUN  echo "chmod +x gradlew                                 "                           >>/home/workweek-user/start-service.sh
-RUN  echo "./gradlew build"                                                             >>/home/workweek-user/start-service.sh
-RUN  echo "cd /opt/docker-spring-boot-scala-workweek/build/libs"                        >>/home/workweek-user/start-service.sh
-RUN  echo "java -jar spring-boot-scala-microservice-0.1.0.jar   "                       >>/home/workweek-user/start-service.sh
-RUN  chmod +x /home/workweek-user/start-service.sh
-CMD  /home/workweek-user/start-service.sh
+RUN  chmod +x /home/luhn/start-service.sh
+
+CMD  /home/luhn/start-service.sh
