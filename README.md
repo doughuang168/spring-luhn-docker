@@ -8,22 +8,11 @@ Spring Boot Luhn Algorithm Application Deploy as Docker Container
 - **http://ec2-54-213-146-147.us-west-2.compute.amazonaws.com:8000/api**
 
 
-### Simple REST Interface ###
- 
-To validate given card number is Luhn number
-
-
-- http://ec2-54-213-146-147.us-west-2.compute.amazonaws.com:8000/api/validate/{cardnumber}
- 
-
-
-
-
 
 ## Validate given card number is Luhn number 
 Request url:
 
-- curl --header "X-API-KEY: secretkey168" http://ec2-54-213-146-147.us-west-2.compute.amazonaws.com:8000/api/validate/{cardnumber}
+- curl --header "X-API-KEY: secretkey168" http://ec2-54-213-146-147.us-west-2.compute.amazonaws.com:8000/api/validate/79927398713
  
 
 Response JSON:
@@ -39,7 +28,7 @@ Response JSON:
 ## Generates the appropriate Luhn check digit for the card number 
 Request url:
 
-- curl --header "X-API-KEY: secretkey168" http://ec2-54-213-146-147.us-west-2.compute.amazonaws.com:8000/api/checkdigit/{cardnumber}
+- curl --header "X-API-KEY: secretkey168" http://ec2-54-213-146-147.us-west-2.compute.amazonaws.com:8000/api/checkdigit/79927398714
  
 
 Response JSON:
