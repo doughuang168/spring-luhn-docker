@@ -29,13 +29,22 @@ public class LuhnController {
                       )
     {
         Luhn luhnInstance = new Luhn();
-        if (!key.contentEquals(luhnApiKey)) {
-            System.out.println(luhnApiKey);
-            System.out.println(key);
-        }
-        
         String result="";
         String message="";
+
+        if (!key.contentEquals(luhnApiKey)) {
+            //System.out.println(luhnApiKey);
+            //System.out.println(key);
+
+            message= "invalid api key";
+            return new Response(counter.incrementAndGet(),
+                    "Error",
+                    String.format(template, message),
+                    result
+            );
+        }
+        
+
         if (luhnInstance.isValidLuhn(cardnumber)) {
             System.out.println("valid card");
             message= cardnumber+" is valid Luhn number";
@@ -61,12 +70,19 @@ public class LuhnController {
     )
     {
         Luhn luhnInstance = new Luhn();
-        if (!key.contentEquals("AKIAIGRRCYKRZIJX633Q")) {
-            System.out.println(key);
+        String message="";
+        String result="";
+        if (!key.contentEquals(luhnApiKey)) {
+            message= "invalid api key";
+            return new Response(counter.incrementAndGet(),
+                    "Error",
+                    String.format(template, message),
+                    result
+            );
         }
 
         String chkDigit = luhnInstance.generateCheckDigit(cardnumber);
-        String message="Check digit is "+chkDigit;
+        message="Check digit is "+chkDigit;
         return new Response(counter.incrementAndGet(),
                             "OK",
                             String.format(template, message),
@@ -87,13 +103,19 @@ public class LuhnController {
     )
     {
         Luhn luhnInstance = new Luhn();
-        if (!key.contentEquals("AKIAIGRRCYKRZIJX633Q")) {
-            System.out.println(key);
+        String message="";
+        String result="";
+        if (!key.contentEquals(luhnApiKey)) {
+            message= "invalid api key";
+            return new Response(counter.incrementAndGet(),
+                    "Error",
+                    String.format(template, message),
+                    result
+            );
         }
-        System.out.println(startRange);
-        System.out.println(endRange);
+
         Integer numbers = luhnInstance.numberOfValidLuhnNumbersInRange(startRange,endRange);
-        String message="Number Of Valid LuhnNumbers In Range is "+numbers.toString();
+        message="Number Of Valid LuhnNumbers In Range is "+numbers.toString();
         return new Response(counter.incrementAndGet(),
                             "OK",
                             String.format(template, message),

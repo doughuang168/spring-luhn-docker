@@ -44,15 +44,12 @@
 
         return {
             getLuhnVerification: function(cardNumber) {
-                //return $http.get('http://localhost:8080/api/validate/'+cardNumber).then(function(result) {
-                //return $http.get('http://192.168.1.139:8080/api/validate/'+cardNumber).then(function(result) {
-		 return $http.get(indexurl+'api/validate/'+cardNumber).then(function(result) {
+		 return $http.get(indexurl+'api/validate/'+cardNumber, {headers: {"X-API-KEY": 'secretkey168'} }).then(function(result) {
                     return result.data;
                 });
             },
             getLuhnCheckDigit: function(cardNumber) {
-                //return $http.get('http://192.168.1.139:8080/api/checkdigit/'+cardNumber).then(function(result) {
-		return $http.get(indexurl+'api/checkdigit/'+cardNumber).then(function(result) {
+		return $http.get(indexurl+'api/checkdigit/'+cardNumber, {headers: {"X-API-KEY": 'secretkey168'} }).then(function(result) {
                     return result.data;
                 });
             }
