@@ -5,8 +5,6 @@ Spring Boot Luhn Algorithm Application Deploy as Docker Container
 **Luhn API** is a simple RESTful Web Service implemented in Java as Docker Container.  And hosted in Public cloud. 
 
 ### REST API End point ###
-- **http://ec2-54-213-146-147.us-west-2.compute.amazonaws.com:8000/api**
-
 
 
 ## Validate given card number is Luhn number 
