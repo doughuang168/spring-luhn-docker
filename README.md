@@ -4,13 +4,13 @@ Spring Boot Luhn Algorithm Application Deploy as Docker Container
 
 **Luhn API** is a simple RESTful Web Service implemented in Java as Docker Container.  And hosted in Public cloud. 
 
-### REST API End point ###
+### REST API ###
 
 
 ## Validate given card number is Luhn number 
 Request url:
 
-- curl --header "X-API-KEY: secretkey168" http://ec2-54-213-146-147.us-west-2.compute.amazonaws.com:8000/api/validate/79927398713
+- curl --header "X-API-KEY: secretkey168" http://apihost:8000/api/validate/79927398713
  
 
 Response JSON:
@@ -26,7 +26,7 @@ Response JSON:
 ## Generates the appropriate Luhn check digit for the card number 
 Request url:
 
-- curl --header "X-API-KEY: secretkey168" http://ec2-54-213-146-147.us-west-2.compute.amazonaws.com:8000/api/checkdigit/79927398714
+- curl --header "X-API-KEY: secretkey168" http://apihost:8000/api/checkdigit/79927398714
  
 
 Response JSON:
@@ -41,7 +41,7 @@ Response JSON:
 ## Generates the appropriate Luhn check digit for the card number 
 Request url:
 
-- curl --header "X-API-KEY: secretkey168" http://ec2-54-213-146-147.us-west-2.compute.amazonaws.com:8000/api/validcardnumber?startRange=7992739871&endRange=301
+- curl --header "X-API-KEY: secretkey168" http://apihost:8000/api/validcardnumber?startRange=7992739871&endRange=301
 
  
 
@@ -52,13 +52,16 @@ Request url:
   "result": "1"
 }
  
-## Angular Directive Demo
-To see the dynamic nature of WebService being used. I implement a simple AngularJS directive as the WebService consumer.
+## Angular  Demo
+To see the dynamic nature of WebService being used. I implement a simple AngularJS controller as the WebService consumer.
 
 
 You can see the demo at  [AWS](http://ec2-54-213-146-147.us-west-2.compute.amazonaws.com:8000/)
 
 
+
+## Security
+API Key is required to access Luhn API Service. The default key value is "secretkey168". The key value can be changed by using java command line argument,  secretkey168, or docker run command line switch "-e luhn_api_key=newKeyValue"
 
 ## Local Build
 Download complete source thru Github:
