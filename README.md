@@ -83,11 +83,12 @@ Download complete source thru Github:
 
 
 ## Using Docker to build and deploy
-- Save https://github.com/doughuang168/spring-luhn-docker/blob/master/Dockerfile to local drive as Dockerfile
 
 -  docker build -t luhn-api  .
 
--  docker run -d --name luhn-api -e luhn_api_key=secretkey168 -p 8080:8080 -t luhn-api
+-  docker run -d --name luhn-api -e luhn_api_key=secretkey168 -p 8080:8080 -e LOCAL_USER_ID=`id -u $USER` -t luhn-api
+
+-  gosu will make the docker container not run as root to ease security concern
 
 - Make sure configure your running host allow inbound traffic for port 8080   
 
