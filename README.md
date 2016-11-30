@@ -61,7 +61,7 @@ You can see the demo at  [AWS](http://ec2-54-213-146-147.us-west-2.compute.amazo
 
 
 ## Security
-API Key is required to access Luhn API Service. The default key value is "secretkey168". The key value can be changed by using java command line argument,  secretkey168, or docker run command line switch "-e luhn_api_key=newKeyValue"
+API Key is required to access Luhn API Service. The default key value is "secretkey168". The key value can be changed by using java command line argument,  -Dluhn.api.key=newKeyValue, or docker run command line switch "-e luhn_api_key=newKeyValue"
 
 ## Local Build
 Download complete source thru Github:
@@ -86,7 +86,7 @@ Download complete source thru Github:
 
 -  docker build -t luhn-api  .
 
--  docker run -d --name luhn-api -e luhn_api_key=secretkey168 -p 8080:8080 -e LOCAL_USER_ID=`id -u $USER` -t luhn-api
+-  docker run -d --name luhn-api -e luhn_api_key=secretkey168 -p 8080:8080 -e LOCAL_USER_ID=\`id -u $USER\` -t luhn-api
 
 -  gosu will make the docker container not run as root to ease security concern
 
