@@ -56,7 +56,7 @@ Request url:
 To see the dynamic nature of WebService being used. I implement a simple AngularJS controller as the WebService consumer.
 
 
-You can see the demo at  [AWS](http://ec2-54-213-146-147.us-west-2.compute.amazonaws.com:8000/)
+You can see the demo at  [AWS](http://ec2-54-213-146-147.us-west-2.compute.amazonaws.com:8000/). It's end-point have been mapped to port 8000.
 
 
 
