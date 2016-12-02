@@ -10,7 +10,7 @@ Spring Boot Luhn Algorithm Application Deploy as Docker Container
 ## Validate given card number is Luhn number 
 Request url:
 
-- curl --header "X-API-KEY: secretkey168" http://apihost:8000/api/validate/79927398713
+- curl --header "X-API-KEY: secretkey168" http://apihost:8080/api/validate/79927398713
  
 
 Response JSON:
@@ -26,7 +26,7 @@ Response JSON:
 ## Generates the appropriate Luhn check digit for the card number 
 Request url:
 
-- curl --header "X-API-KEY: secretkey168" http://apihost:8000/api/checkdigit/79927398714
+- curl --header "X-API-KEY: secretkey168" http://apihost:8080/api/checkdigit/79927398714
  
 
 Response JSON:
@@ -41,7 +41,7 @@ Response JSON:
 ## Generates the appropriate Luhn check digit for the card number 
 Request url:
 
-- curl --header "X-API-KEY: secretkey168" http://apihost:8000/api/validcardnumber?startRange=7992739871&endRange=301
+- curl --header "X-API-KEY: secretkey168" http://apihost:8080/api/validcardnumber?startRange=7992739871&endRange=301
 
  
 
